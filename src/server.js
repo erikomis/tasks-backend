@@ -1,5 +1,7 @@
-const expres = require('express');
-const router = expres.router();
-router.listen(3001, () => {
-  console.log('escutando na porta 3001');
+import express from 'express';
+
+const app = express();
+
+app.listen(3333, () => {
+  console.log('server iniciado na porta 3333');
 });
