@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon sserver.js",
+    "dev": "nodemon ./src/server.js",
     "build": "sucrase ./src -d ./dist --trnsforms imports",
     "start": "node dist/server.js"
   },
@@ -27,6 +27,7 @@
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.4",
     "pg": "^8.7.1",
-    "sequelize": "^6.12.5"
+    "sequelize": "^6.12.5",
+    "sequelize-cli": "^6.4.1"
   }
 }
