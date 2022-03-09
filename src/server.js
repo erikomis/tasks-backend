@@ -1,13 +1,17 @@
+import dotenv from 'dotenv';
 import express from 'express';
-import ErrorsApp from './erros/ErrorsApp';
+import './database';
 import cors from 'cors';
-import router from './routes';
+import routerIndex from './routes';
+import ErrorsApp from './erros/ErrorsApp';
+dotenv.config();
 
 const app = express();
 
-app.use(router);
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(routerIndex);
 
 app.use((error, request, response, next) => {
   if (error instanceof ErrorsApp) {
@@ -22,6 +26,9 @@ app.use((error, request, response, next) => {
   });
 });
 
-app.listen(3333, () => {
-  console.log('server iniciado na porta 3333');
+const port = 3333;
+app.listen(port, () => {
+  console.log();
+  console.log(`Escutando  na porta ${port}`);
+  console.log(`Escutando  na porta ${port}`);
 });
