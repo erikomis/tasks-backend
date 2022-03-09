@@ -10,7 +10,9 @@ class Auth {
         Errors: ['Crendencias invalidas'],
       });
     }
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({
+      where: { email },
+    });
 
     if (!user) {
       return response.status(401).json({
@@ -23,12 +25,12 @@ class Auth {
         errors: ['Senha invalida'],
       });
     }
-    const { id } = user;
+    const { id, nome } = user;
     const token = jwt.sign({ id, email }, process.env.TOKEN_SECRET, {
       expiresIn: process.env.TOKEN_EXPIRATION,
     });
 
-    return response.json({ token });
+    return response.json({ id, nome, email, token });
   }
 
   async register(request, response) {
