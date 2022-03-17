@@ -6,7 +6,7 @@ class Auth {
     const { email = '', password = '' } = resquest.body;
 
     if (!email || !password) {
-      return resquest.status(401).json({
+      return response.status(401).json({
         Errors: ['Crendencias invalidas'],
       });
     }
@@ -37,7 +37,11 @@ class Auth {
     try {
       const novoUser = await User.create(request.body);
       const { id, nome, email } = novoUser;
-      return response.json({ id, nome, email });
+
+      const token = jwt.sign({ id, email }, process.env.TOKEN_SECRET, {
+        expiresIn: process.env.TOKEN_EXPIRATION,
+      });
+      return response.json({ id, token, nome, email });
     } catch (error) {
       return response
         .status(400)
