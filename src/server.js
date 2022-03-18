@@ -3,6 +3,7 @@ import express from 'express';
 import './database';
 import cors from 'cors';
 import routerIndex from './routes';
+import { resolve } from 'path';
 import ErrorsApp from './erros/ErrorsApp';
 dotenv.config();
 
@@ -10,6 +11,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(resolve(__dirname, '..', 'uploads')));
 app.use(cors());
 app.use(routerIndex);
 
