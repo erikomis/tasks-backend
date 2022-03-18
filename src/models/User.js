@@ -53,6 +53,10 @@ export default class User extends Model {
     return this;
   }
 
+  static associate(models) {
+    this.hasMany(models.Task, { foreignKey: 'user_id' });
+  }
+
   passwordIsValid(password) {
     return brcryptjs.compare(password, this.password_hash);
   }
