@@ -27,6 +27,7 @@
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.4",
+    "nodemailer": "^6.7.2",
     "pg": "^8.7.1",
     "sequelize": "^6.12.5",
     "sequelize-cli": "^6.4.1"
