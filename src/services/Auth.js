@@ -4,7 +4,6 @@ import User from '../models/User';
 class Auth {
   async login(resquest, response) {
     const { email = '', password = '' } = resquest.body;
-
     if (!email || !password) {
       return response.status(401).json({
         Errors: ['Crendencias invalidas'],
@@ -13,13 +12,11 @@ class Auth {
     const user = await User.findOne({
       where: { email },
     });
-
     if (!user) {
       return response.status(401).json({
         errors: ['Usuario não existe'],
       });
     }
-
     if (!(await user.passwordIsValid(password))) {
       return response.status(401).json({
         errors: ['Senha invalida'],
@@ -30,7 +27,7 @@ class Auth {
       expiresIn: process.env.TOKEN_EXPIRATION,
     });
 
-    return response.json({ id, nome, email, token });
+    return response.status(201).json({ nome, email, token });
   }
 
   async register(request, response) {
