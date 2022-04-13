@@ -3,8 +3,8 @@ import loginRequired from '../middleware/loginRequired';
 import Users from '../services/Users';
 
 const routerUser = new Router();
-routerUser.get('/:id', loginRequired, Users.userPorId);
-routerUser.put('/:id', loginRequired, Users.atualizUser);
-routerUser.delete('/:id', loginRequired, Users.deleteUser);
+routerUser.get('/', loginRequired, Users.userPorId);
+routerUser.put('/', loginRequired, Users.atualizUser);
+routerUser.delete('/', loginRequired, Users.deleteUser);
 
 export default routerUser;
