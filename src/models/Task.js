@@ -11,7 +11,7 @@ export default class Task extends Model {
           validate: {
             len: {
               args: [3, 255],
-              msg: 'Campo nome deve ter entre 3  e 255 caracteres',
+              msg: 'Campo nome deve ter entre 3 e 255 caracteres',
             },
           },
         },
@@ -20,7 +20,7 @@ export default class Task extends Model {
           defaultValue: '',
           validate: {
             notEmpty: {
-              msg: 'Não pode ficar em branco esse  campo',
+              msg: 'Não pode ficar em branco esse campo',
             },
           },
         },
