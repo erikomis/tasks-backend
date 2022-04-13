@@ -30,6 +30,7 @@
     "nodemailer": "^6.7.2",
     "pg": "^8.7.1",
     "sequelize": "^6.12.5",
-    "sequelize-cli": "^6.4.1"
+    "sequelize-cli": "^6.4.1",
+    "swagger-ui-express": "^4.3.0"
   }
 }

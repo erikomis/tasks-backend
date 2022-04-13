@@ -1,0 +1,90 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "tasks Documentation",
+    "description": "This is an Api Tasks",
+    "version": "1.0.0",
+    "contact": {
+      "email": "erik@gmail.com"
+    }
+  },
+  "paths":{
+    "/auth/login": {
+      "post": {
+        "tags": ["auth/login"],
+        "summary": "login",
+        "description":"auto login",
+        "requestBody": {
+          "content":{
+            "application/json":{
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email":{
+                    "type": "string"
+                  },
+                  "password":{
+                    "type": "string"
+                  }
+                }
+              },
+              "example":{
+                "email":"testeteste@gmai.com",
+                "password":"martins22@"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "sucess"
+          },
+          "401": {
+            "descrioption": "user not exists"
+          }
+        }
+      }
+    },
+    "auth/register": {
+     "post":{
+      "tags": ["auth/register"],
+      "summary": "register",
+      "description":"auto register",
+      "requestBody": {
+        "content":{
+          "application/json":{
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "type":"string"
+                },
+                "email":{
+                  "type": "string"
+                },
+                "password":{
+                  "type": "string"
+                }
+              }
+            },
+            "example":{
+              "nome":"testeste",
+              "email":"testeteste@gmai.com",
+              "password":"martins22@"
+            }
+          }
+        }
+      },
+      "responses": {
+        "201": {
+          "description": "sucess"
+        },
+        "400": {
+          "description": "internal error"
+        }
+      }
+     }
+    }
+  }
+
+}
