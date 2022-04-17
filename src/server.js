@@ -32,6 +32,6 @@ app.use((error, request, response, _next) => {
 });
 
 const port = 3333;
-app.listen(process.env.PORT || 33333, () => {
+app.listen(process.env.PORT || 3333, () => {
   console.log(`\nEscutando  na porta ${port}`);
 });
