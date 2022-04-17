@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  api:
+    build: .
+    container_name: 'tasks'
+    ports:
+    - 3333:3333
+    volumes:
+      - .:/app
+    depends_on:
+      - 'db'
+
+  db:
+    image: postgres
+    

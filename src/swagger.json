@@ -40,7 +40,7 @@
             "description": "sucess"
           },
           "401": {
-            "descrioption": "user not exists"
+            "description": "user not exists"
           }
         }
       }
