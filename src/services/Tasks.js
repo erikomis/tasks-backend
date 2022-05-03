@@ -30,7 +30,6 @@ class Tasks {
             },
           });
         }
-
         const task = await Task.create({
           user_id,
           originalname,

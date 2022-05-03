@@ -15,9 +15,6 @@ module.exports = {
     updatedAt: 'updated_at',
   },
   dialectOptions: {
-    ssl: {
-      rejectUnauthorized: false,
-    },
     timezone: 'America/Sao_Paulo',
   },
   timezone: 'America/Sao_Paulo',

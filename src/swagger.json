@@ -46,7 +46,7 @@
       }
     },
     "auth/register": {
-     "post":{
+    "post":{
       "tags": ["auth/register"],
       "summary": "register",
       "description":"auto register",
@@ -83,8 +83,7 @@
           "description": "internal error"
         }
       }
-     }
+    }
     }
   }
-
 }
