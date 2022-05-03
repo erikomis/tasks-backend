@@ -1,10 +1,10 @@
-import multer from 'multer';
-import { Op } from 'sequelize';
-import multerConfig from '../config/multerConfig';
-import Task from '../models/Task';
-import { valida } from '../util/validacoes';
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _multer = require('multer'); var _multer2 = _interopRequireDefault(_multer);
+var _sequelize = require('sequelize');
+var _multerConfig = require('../config/multerConfig'); var _multerConfig2 = _interopRequireDefault(_multerConfig);
+var _Task = require('../models/Task'); var _Task2 = _interopRequireDefault(_Task);
+var _validacoes = require('../util/validacoes');
 
-const upload = multer(multerConfig).single('foto');
+const upload = _multer2.default.call(void 0, _multerConfig2.default).single('foto');
 class Tasks {
   async criarTask(request, response) {
     return upload(request, response, async (error) => {
@@ -21,7 +21,7 @@ class Tasks {
           return response.status(401).json({ Errors: ['User nao existe'] });
         }
         const listField = { nome, descricao };
-        const verificacao = valida(listField);
+        const verificacao = _validacoes.valida.call(void 0, listField);
         if (verificacao) {
           return response.status(400).json({
             Errors: {
@@ -30,7 +30,8 @@ class Tasks {
             },
           });
         }
-        const task = await Task.create({
+
+        const task = await _Task2.default.create({
           user_id,
           originalname,
           filename,
@@ -54,7 +55,7 @@ class Tasks {
       if (!user_id) {
         return response.status(401).json({ Errors: ['User nao existe'] });
       }
-      const tasks = await Task.findAndCountAll({
+      const tasks = await _Task2.default.findAndCountAll({
         order: [['id', 'DESC']],
         where: { user_id: user_id },
         offset: page * limit,
@@ -71,7 +72,7 @@ class Tasks {
       if (!id) {
         return response.status(401).json({ Errors: ['Task nao existe'] });
       }
-      const task = await Task.findByPk(id);
+      const task = await _Task2.default.findByPk(id);
       return response.json(task);
     } catch (error) {
       return response.status(400).json({
@@ -92,7 +93,7 @@ class Tasks {
           return response.status(401).json({ Errors: ['User nao existe'] });
         }
         const listField = { nome, descricao };
-        const verificacao = valida(listField);
+        const verificacao = _validacoes.valida.call(void 0, listField);
         if (verificacao) {
           return response.status(400).json({
             Errors: {
@@ -101,7 +102,7 @@ class Tasks {
             },
           });
         }
-        const task = await Task.findByPk(id);
+        const task = await _Task2.default.findByPk(id);
         await task.update({
           user_id,
           nome,
@@ -133,7 +134,7 @@ class Tasks {
             return response.status(401).json({ Errors: ['User nao existe'] });
           }
           const listField = { nome, descricao };
-          const verificacao = valida(listField);
+          const verificacao = _validacoes.valida.call(void 0, listField);
           if (verificacao) {
             return response.status(400).json({
               Errors: {
@@ -142,7 +143,7 @@ class Tasks {
               },
             });
           }
-          const task = await Task.findByPk(id);
+          const task = await _Task2.default.findByPk(id);
 
           await task.update({
             user_id,
@@ -172,7 +173,7 @@ class Tasks {
       if (!user_id) {
         return response.status(401).json({ Errors: ['User nao existe'] });
       }
-      const task = await Task.findByPk(id);
+      const task = await _Task2.default.findByPk(id);
       await task.destroy();
       return response.status(200).json([]);
     } catch (error) {
@@ -186,11 +187,11 @@ class Tasks {
     try {
       const user_id = request.userId;
       const { search } = request.body;
-      const task = await Task.findAll({
+      const task = await _Task2.default.findAll({
         order: ['nome'],
         where: {
           user_id: user_id,
-          nome: { [Op.like]: '%' + search + '%' },
+          nome: { [_sequelize.Op.like]: '%' + search + '%' },
         },
       });
       console.log(task);
@@ -208,4 +209,4 @@ class Tasks {
     }
   }
 }
-export default new Tasks();
+exports. default = new Tasks();
