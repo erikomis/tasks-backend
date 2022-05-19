@@ -8,29 +8,38 @@
       "email": "erik@gmail.com"
     }
   },
-  "paths":{
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "paths": {
     "/auth/login": {
       "post": {
         "tags": ["auth/login"],
         "summary": "login",
-        "description":"auto login",
+        "description": "auto login",
         "requestBody": {
-          "content":{
-            "application/json":{
+          "content": {
+            "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "email":{
+                  "email": {
                     "type": "string"
                   },
-                  "password":{
+                  "password": {
                     "type": "string"
                   }
                 }
               },
-              "example":{
-                "email":"testeteste@gmai.com",
-                "password":"martins22@"
+              "example": {
+                "email": "testeteste@gmai.com",
+                "password": "martins22@"
               }
             }
           }
@@ -45,45 +54,61 @@
         }
       }
     },
-    "auth/register": {
-    "post":{
-      "tags": ["auth/register"],
-      "summary": "register",
-      "description":"auto register",
-      "requestBody": {
-        "content":{
-          "application/json":{
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "type":"string"
-                },
-                "email":{
-                  "type": "string"
-                },
-                "password":{
-                  "type": "string"
+    "/auth/register": {
+      "post": {
+        "tags": ["auth/register"],
+        "summary": "register",
+        "description": "auto register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
                 }
+              },
+              "example": {
+                "nome": "testeste",
+                "email": "testeteste@gmai.com",
+                "password": "martins22@"
               }
-            },
-            "example":{
-              "nome":"testeste",
-              "email":"testeteste@gmai.com",
-              "password":"martins22@"
             }
           }
-        }
-      },
-      "responses": {
-        "201": {
-          "description": "sucess"
         },
-        "400": {
-          "description": "internal error"
+        "responses": {
+          "201": {
+            "description": "sucess"
+          },
+          "400": {
+            "description": "internal error"
+          }
         }
       }
-    }
+    },
+    "/users": {
+      "get": {
+        "tags": ["/user/"],
+        "summary": "user",
+        "description": "auto register",
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "sucess"
+          },
+          "401": {
+            "description": "login required"
+          }
+        }
+      }
     }
   }
 }
