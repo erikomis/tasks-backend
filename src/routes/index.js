@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import routerAuth from './auth';
-import routerTask from './task';
-import routerUser from './user';
+import { routerAuth } from './auth';
+import { routerTask } from './task';
+import { routerUser } from './user';
 
 const routerIndex = Router();
 

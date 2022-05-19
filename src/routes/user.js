@@ -1,10 +1,8 @@
 import { Router } from 'express';
 import loginRequired from '../middleware/loginRequired';
-import Users from '../services/Users';
+import { userController } from '../controller/index';
 
-const routerUser = new Router();
-routerUser.get('/', loginRequired, Users.userPorId);
-routerUser.put('/', loginRequired, Users.atualizUser);
-routerUser.delete('/', loginRequired, Users.deleteUser);
-
-export default routerUser;
+export const routerUser = new Router();
+routerUser.get('/', loginRequired, userController.userById);
+routerUser.put('/', loginRequired, userController.updateUser);
+routerUser.delete('/', loginRequired, userController.deleteUser);
