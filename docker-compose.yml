@@ -9,7 +9,7 @@ services:
       - .:/app
     depends_on:
       - 'db'
-
   db:
     image: postgres
     
+

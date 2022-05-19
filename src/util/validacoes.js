@@ -14,5 +14,9 @@ export function valida(listField) {
       .filter((item) => item);
     return getNotFillFields;
   }
+  // return Object.entries(listField)
+  //   .map(([key, value]) => (!value ? key : undefined))
+  //   .filter(Boolean);
+
   return null;
 }

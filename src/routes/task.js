@@ -1,13 +1,13 @@
 import { Router } from 'express';
 import loginRequired from '../middleware/loginRequired';
-import Tasks from '../services/Tasks';
-const routerTask = new Router();
-routerTask.post('/', loginRequired, Tasks.criarTask);
-routerTask.get('/', loginRequired, Tasks.verTodasAsTasks);
-routerTask.get('/:id', loginRequired, Tasks.taskById);
+import { tasksController } from '../controller/index';
 
-routerTask.put('/:id', loginRequired, Tasks.atualizarTaskById);
-routerTask.delete('/:id', loginRequired, Tasks.deleteTaskByid);
-routerTask.post('/search', loginRequired, Tasks.buscaPorNome);
+export const routerTask = new Router();
 
-export default routerTask;
+routerTask.post('/', loginRequired, tasksController.createTask);
+routerTask.get('/', loginRequired, tasksController.findAllTasks);
+routerTask.get('/:id', loginRequired, tasksController.findTaskById);
+
+routerTask.put('/:id', loginRequired, tasksController.updateTask);
+routerTask.delete('/:id', loginRequired, tasksController.deleteTask);
+routerTask.post('/search', loginRequired, tasksController.findByNome);
