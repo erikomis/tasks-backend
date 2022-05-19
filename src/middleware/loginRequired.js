@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/User';
+import User from '../infra/sequelize/models/User';
 
 export default async (request, response, next) => {
   const { authorization } = request.headers;
